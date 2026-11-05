@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0A0A0A"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- ══ HEADER ══ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="&#127919;"
+            android:textSize="56sp"
+            android:gravity="center"
+            android:paddingTop="36dp"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FF PANEL"
+            android:textColor="#FF4444"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:letterSpacing="0.3"
+            android:paddingBottom="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HEADSHOT OVERLAY"
+            android:textColor="#666666"
+            android:textSize="11sp"
+            android:gravity="center"
+            android:letterSpacing="0.25"
+            android:paddingBottom="36dp"/>
+
+        <!-- ══ PERMISSIONS LABEL ══ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PERMISSIONS"
+            android:textColor="#555555"
+            android:textSize="10sp"
+            android:letterSpacing="0.3"
+            android:paddingBottom="10dp"/>
+
+        <!-- ══ OVERLAY PERMISSION CARD ══ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="&#128375;  Draw Over Apps"
+                    android:textColor="#EEEEEE"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvOverlayStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&#10007;  REQUIRED"
+                    android:textColor="#FF4444"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Needed to show panel floating over Free Fire"
+                android:textColor="#555555"
+                android:textSize="11sp"
+                android:paddingBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnGrantOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:text="GRANT PERMISSION"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF4444"
+                android:stateListAnimator="@null"/>
+        </LinearLayout>
+
+        <!-- ══ NOTIFICATION PERMISSION CARD ══ -->
+        <LinearLayout
+            android:id="@+id/cardNotif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="10dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="&#128276;  Notifications"
+                    android:textColor="#EEEEEE"
+                    android:textSize="13sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tvNotifStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="&#10007;  REQUIRED"
+                    android:textColor="#FF4444"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Needed to keep panel alive in background"
+                android:textColor="#555555"
+                android:textSize="11sp"
+                android:paddingBottom="12dp"/>
+
+            <Button
+                android:id="@+id/btnGrantNotif"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:text="GRANT PERMISSION"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#FF4444"
+                android:stateListAnimator="@null"/>
+        </LinearLayout>
+
+        <!-- ══ HOW TO USE ══ -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HOW TO USE"
+            android:textColor="#555555"
+            android:textSize="10sp"
+            android:letterSpacing="0.3"
+            android:paddingTop="8dp"
+            android:paddingBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/card_bg"
+            android:padding="16dp"
+            android:layout_marginBottom="28dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1.  Grant all permissions above\n2.  Tap START OVERLAY below\n3.  Open Free Fire\n4.  Tap the &#127919; floating icon\n5.  Toggle HEADSHOT switch ON"
+                android:textColor="#888888"
+                android:textSize="12sp"
+                android:lineSpacingMultiplier="1.7"/>
+        </LinearLayout>
+
+        <!-- ══ START / STOP BUTTON ══ -->
+        <Button
+            android:id="@+id/btnStartStop"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="&#9654;  START OVERLAY"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#FF4444"
+            android:stateListAnimator="@null"
+            android:layout_marginBottom="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="FF PANEL v1.0"
+            android:textColor="#252525"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:paddingBottom="12dp"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

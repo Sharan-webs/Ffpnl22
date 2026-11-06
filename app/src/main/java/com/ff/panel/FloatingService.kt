@@ -29,11 +29,12 @@ class FloatingService : Service() {
     companion object {
         const val CHANNEL_ID = "ff_panel_channel"
         const val NOTIF_ID = 1
+        var isRunning = false
     }
 
     override fun onCreate() {
         super.onCreate()
-
+        isRunning = true
         getSharedPreferences("ff_panel", MODE_PRIVATE)
             .edit().putBoolean("running", true).apply()
 
@@ -43,7 +44,7 @@ class FloatingService : Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             startForeground(
                 NOTIF_ID, notif,
-                ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PLAYBACK
+                ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC
             )
         } else {
             startForeground(NOTIF_ID, notif)
@@ -101,14 +102,12 @@ class FloatingService : Service() {
             y = 250
         }
 
-        // View references
-        val tvIcon        = floatingView.findViewById<TextView>(R.id.tvIcon)
+        val tvIcon         = floatingView.findViewById<TextView>(R.id.tvIcon)
         val panelContainer = floatingView.findViewById<LinearLayout>(R.id.panelContainer)
-        val tvStatus      = floatingView.findViewById<TextView>(R.id.tvStatus)
-        val switchHS      = floatingView.findViewById<SwitchCompat>(R.id.switchHeadshot)
-        val tvClose       = floatingView.findViewById<TextView>(R.id.tvClose)
+        val tvStatus       = floatingView.findViewById<TextView>(R.id.tvStatus)
+        val switchHS       = floatingView.findViewById<SwitchCompat>(R.id.switchHeadshot)
+        val tvClose        = floatingView.findViewById<TextView>(R.id.tvClose)
 
-        // ——— Drag + Tap on Icon ———
         var initX = 0; var initY = 0
         var touchX = 0f; var touchY = 0f
         var moved = false
@@ -135,6 +134,7 @@ class FloatingService : Service() {
                         panelVisible = !panelVisible
                         panelContainer.visibility =
                             if (panelVisible) View.VISIBLE else View.GONE
+                        windowManager.updateViewLayout(floatingView, params)
                     }
                     true
                 }
@@ -142,7 +142,6 @@ class FloatingService : Service() {
             }
         }
 
-        // ——— Headshot Toggle ———
         switchHS.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 tvStatus.text = "HEADSHOT: ON"
@@ -155,7 +154,6 @@ class FloatingService : Service() {
             }
         }
 
-        // ——— Close Button ———
         tvClose.setOnClickListener { stopSelf() }
 
         windowManager.addView(floatingView, params)
@@ -163,6 +161,7 @@ class FloatingService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
+        isRunning = false
         getSharedPreferences("ff_panel", MODE_PRIVATE)
             .edit().putBoolean("running", false).apply()
         if (::floatingView.isInitialized) {
